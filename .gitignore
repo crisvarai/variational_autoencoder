@@ -1,3 +1,11 @@
+# Compiled python
+__pycache__/
+
+# Dataset
 MNIST
+
+# Saved weights
 weights
+
+# Test Notebook
 VAE_pytorch.ipynb
