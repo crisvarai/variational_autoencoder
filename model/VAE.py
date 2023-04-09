@@ -1,8 +1,8 @@
 import torch
+import logging
 from torch import nn
 
 class VAE(nn.Module):
-    
     def __init__(self, in_dim, hidden_dim=200, z_dim=20):
         super().__init__()
         # encoder init
@@ -44,4 +44,5 @@ if __name__ == "__main__":
     x = torch.randn(BATCH_SIZE, IMG_SIZE*IMG_SIZE)
     vae_model = VAE(IN_DIM)
     out, mu, sigma = vae_model(x)
-    print(f"x_rec: {out.shape} mu: {mu.shape}, sigma: {sigma.shape}")
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s-%(name)s-%(levelname)s-%(message)s")
+    logging.info(f"x_rec: {out.shape} mu: {mu.shape}, sigma: {sigma.shape}")

@@ -9,3 +9,6 @@ weights
 
 # Test Notebook
 VAE_pytorch.ipynb
+
+# Loggin
+*.log

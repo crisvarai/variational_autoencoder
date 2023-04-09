@@ -1,4 +1,5 @@
 import torch
+import logging
 import numpy as np
 from torch import nn
 from tqdm import tqdm
@@ -30,9 +31,9 @@ def fit(model, train_loader, in_dim, epochs, lr, weights_path, device):
             optimizer.step()
             loop.set_description(f"Loss {mean_tl}")
 
-            if epoch % 5 == 0 and step == 0 and epoch != 0:
-                print(f"Epoch {epoch} | step {step:03d} Loss: {mean_tl}")
-                torch.save(model.state_dict(), weights_path)
-                print("WEIGHTS-ARE-SAVED")
+        if epoch % 5 == 0 and epoch != 0:
+            logging.info(f"Epoch {epoch} | step {step:03d} Loss: {mean_tl}")
+            torch.save(model.state_dict(), weights_path)
+            logging.info("WEIGHTS-ARE-SAVED")
         train_losses.append(mean_tl)
     return train_losses
